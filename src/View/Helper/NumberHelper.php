@@ -216,8 +216,10 @@ class NumberHelper extends Helper
     }
 
     /**
-     * Getter/setter for default currency
+     * Getter/setter for default currency. This behavior is *deprecated* and will be
+     * removed in future versions of CakePHP.
      *
+     * @deprecated 3.9.0 Use {@link getDefaultCurrency()} and {@link setDefaultCurrency()} instead.
      * @param string|false|null $currency Default currency string to be used by currency()
      * if $currency argument is not provided. If boolean false is passed, it will clear the
      * currently stored value. Null reads the current default.
@@ -226,6 +228,29 @@ class NumberHelper extends Helper
     public function defaultCurrency($currency): ?string
     {
         return $this->_engine->defaultCurrency($currency);
+    }
+
+    /**
+     * Getter for default currency
+     *
+     * @return string Currency
+     */
+    public function getDefaultCurrency(): string
+    {
+        return $this->_engine->getDefaultCurrency();
+    }
+
+    /**
+     * Setter for default currency
+     *
+     * @param string|null $currency Default currency string to be used by {@link currency()}
+     * if $currency argument is not provided. If null is passed, it will clear the
+     * currently stored value
+     * @return void
+     */
+    public function setDefaultCurrency(?string $currency = null): void
+    {
+        $this->_engine->setDefaultCurrency($currency);
     }
 
     /**
